@@ -1,0 +1,25 @@
+.all {
+    text-align:center;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+ }
+
+.all .inputAndButton{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+button.mat-stroked-button{
+    font-size: 14px;
+    height: 45px;
+    margin: 10px;
+}
+
+mat-form-field.mat-form-field{
+    font-size: 12px;
+    width: 300px;
+    padding: 16.125px 0px 0px 0px;
+}
+
