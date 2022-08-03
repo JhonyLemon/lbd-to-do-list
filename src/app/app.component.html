@@ -6,11 +6,17 @@
 </mat-form-field>
 <button mat-stroked-button color="accent" (click)="addToDo()">Add</button>
 </div>
+<div *ngIf="getUndoneTasks().length>0">
 <p>Do zrobienia</p>
+<mat-divider></mat-divider>
+</div>
 <mat-list role="tasks" *ngFor="let task of getUndoneTasks()">
   <app-todo-item-component [toDo]="task"></app-todo-item-component>
 </mat-list>
+<div *ngIf="getDoneTasks().length>0">
 <p>Zrobione</p>
+<mat-divider></mat-divider>
+</div>
 <mat-list role="tasks" *ngFor="let task of getDoneTasks()">
   <app-todo-item-component [toDo]="task"></app-todo-item-component>
 </mat-list>
