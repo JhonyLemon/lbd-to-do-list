@@ -23,3 +23,17 @@ mat-form-field.mat-form-field{
     padding: 16.125px 0px 0px 0px;
 }
 
+.container{
+  position: fixed;
+  top: 1%;
+  right: 1%;
+  max-height: 514px;
+  overflow-y: scroll; /* Add the ability to scroll */
+  scrollbar-width: none;
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+
+.container::-webkit-scrollbar {
+  display: none;
+}
+

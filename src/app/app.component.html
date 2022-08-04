@@ -1,3 +1,6 @@
+<div class="container">
+  <ng-container #container></ng-container>
+</div>
 <div class="all">
 <div class="inputAndButton">
 <mat-form-field appearance="fill">
@@ -11,13 +14,13 @@
 <mat-divider></mat-divider>
 </div>
 <mat-list role="tasks" *ngFor="let task of getUndoneTasks()">
-  <app-todo-item-component [toDo]="task"></app-todo-item-component>
+  <app-todo-item-component (doneEvent)="doneNotif()" (deleteEvent)="deleteTask($event)" [toDo]="task"></app-todo-item-component>
 </mat-list>
 <div *ngIf="getDoneTasks().length>0">
 <p>Zrobione</p>
 <mat-divider></mat-divider>
 </div>
 <mat-list role="tasks" *ngFor="let task of getDoneTasks()">
-  <app-todo-item-component [toDo]="task"></app-todo-item-component>
+  <app-todo-item-component (deleteEvent)="deleteTask($event)" [toDo]="task"></app-todo-item-component>
 </mat-list>
 </div>

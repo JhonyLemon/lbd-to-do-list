@@ -1,18 +1,20 @@
 <div>
-<mat-icon 
+<mat-icon
     class="checkMark margin"
-    aria-hidden="false" 
+    aria-hidden="false"
     [ngStyle]="{'background-color': color }"
-    fontIcon="done" (mouseenter) ="mouseEnter() "  
-    (mouseleave) ="mouseLeave()" 
+    (mouseenter) ="mouseEnter() "
+    (mouseleave) ="mouseLeave()"
     (click)="click()" >
+    {{icon}}
 </mat-icon>
 <span appTooltip tooltip="{{
                         toDo.done ? 'Zrobione dnia '+(toDo.doneCreated|date:'longDate') : null
-                    }}" 
+                    }}"
         class="margin">{{toDo.task}}
 </span>
 <button class="deleteButton margin" mat-fab color="warn" aria-hidden="true" (click)="deleteElement()" >
     <mat-icon class="deleteIcon">delete</mat-icon>
 </button>
+
 </div>

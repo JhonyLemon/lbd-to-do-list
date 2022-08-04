@@ -1,4 +1,3 @@
-import { style } from '@angular/animations';
 import { Directive, ElementRef, HostListener, Input, OnDestroy } from '@angular/core';
 
 @Directive({
@@ -6,7 +5,7 @@ import { Directive, ElementRef, HostListener, Input, OnDestroy } from '@angular/
 })
 export class TooltipDirective implements OnDestroy {
 
-  @Input() 
+  @Input()
   tooltip!: string;
 
   private tooltipObject: any;
@@ -21,7 +20,7 @@ export class TooltipDirective implements OnDestroy {
   @HostListener('mouseenter') onMouseEnter() {
     if(this.tooltip!=null && this.tooltip!=""){
       let x = this.element.nativeElement.getBoundingClientRect().left + this.element.nativeElement.offsetWidth / 2;
-      let y = this.element.nativeElement.getBoundingClientRect().top + this.element.nativeElement.offsetHeight + 6; 
+      let y = this.element.nativeElement.getBoundingClientRect().top + this.element.nativeElement.offsetHeight + 6;
       let popup = document.createElement('div');
       popup.innerHTML = this.tooltip;
 

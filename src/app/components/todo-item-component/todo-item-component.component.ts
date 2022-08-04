@@ -1,6 +1,7 @@
-import { AfterContentInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { TodosService } from '../services/todos/todos.service';
-import { Todo } from '../interfaces/todo';
+import { AfterContentInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild, ViewContainerRef } from '@angular/core';
+import { Todo } from 'src/app/interfaces/todo';
+import { TodosService } from 'src/app/services/todos/todos.service';
+
 
 @Component({
   selector: 'app-todo-item-component',
@@ -13,30 +14,55 @@ export class TodoItemComponentComponent implements OnInit, AfterContentInit {
 
   @Input()
   toDo!:Todo;
- 
+
   DEFAULT_OFF_COLOR:String="#BBBBBB";
   DEFAULT_ON_COLOR:String="#33A532";
   HOVER_OFF_COLOR:String="#30D5C8";
   HOVER_ON_COLOR:String="#FFFD37";
+  DONE_ICON:string="done";
+
+  icon!:string;
 
   color!:String;
 
+
+  @Output()
+  deleteEvent:EventEmitter<Todo> = new EventEmitter();
+  @Output()
+  doneEvent:EventEmitter<Todo> = new EventEmitter();
+
+
   mouseEnter(){
-    this.toDo.done ? this.color=this.HOVER_ON_COLOR : this.color=this.HOVER_OFF_COLOR
+    if(this.toDo.done){
+      this.color=this.HOVER_ON_COLOR
+      this.icon=this.DONE_ICON;
+    }else{
+      this.color=this.HOVER_OFF_COLOR
+      this.icon=this.DONE_ICON;
+    }
   }
 
   mouseLeave(){
-    this.toDo.done ? this.color=this.DEFAULT_ON_COLOR : this.color=this.DEFAULT_OFF_COLOR
+    if(this.toDo.done){
+      this.color=this.DEFAULT_ON_COLOR
+      this.icon=this.DONE_ICON;
+    }else{
+      this.color=this.DEFAULT_OFF_COLOR
+      this.icon="";
+    }
   }
 
   click(){
     if(this.toDo.done){
       this.toDo.done=false;
       this.color=this.DEFAULT_OFF_COLOR;
+      this.icon="";
     }else{
       this.toDo.done=true;
       this.toDo.doneCreated=new Date();
+      this.doneEvent.emit();
       this.color=this.DEFAULT_ON_COLOR
+      this.icon="done";
     }
   }
 
@@ -48,8 +74,7 @@ export class TodoItemComponentComponent implements OnInit, AfterContentInit {
   }
 
   deleteElement(){
-    console.log("Delete");
-    this.toDosService.removeToDO(this.toDo);
+    this.deleteEvent.emit(this.toDo);
   }
 
 }
