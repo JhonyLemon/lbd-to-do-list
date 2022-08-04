@@ -1,3 +1,4 @@
+
 import { AfterContentInit, Component, ComponentRef, ElementRef, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { NotificationDynamicComponent } from './components/notification-dynamic/notification-dynamic.component';
 import { Todo } from './interfaces/todo';
@@ -16,7 +17,9 @@ export class AppComponent implements AfterContentInit,OnInit {
   constructor(
     private toDosService:TodosService,
     private filterPipe:ToDoListFilterPipe,
-    private notif:NotificationTimerService,private notifEvents:NotificationEventServiceService){}
+    private notif:NotificationTimerService,
+    private notifEvents:NotificationEventServiceService)
+    {}
 
   ngOnInit(): void {
     this.notifEvents.message$.subscribe(ref => {
@@ -56,7 +59,6 @@ export class AppComponent implements AfterContentInit,OnInit {
   }
 
   deleteTask(task:Todo){
-    console.log("delete");
     this.toDosService.removeToDO(task);
   }
 

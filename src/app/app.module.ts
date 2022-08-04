@@ -12,6 +12,8 @@ import {MatIconModule} from '@angular/material/icon';
 import { ToDoListFilterPipe } from './pipes/toDoListFilter/to-do-list-filter.pipe';
 import { TooltipDirective } from './directives/tooltip.directive';
 import { NotificationDynamicComponent } from './components/notification-dynamic/notification-dynamic.component';
+import { SnackbarComponent } from './components/snackbar/snackbar.component';
+import {DialogModule} from '@angular/cdk/dialog';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { NotificationDynamicComponent } from './components/notification-dynamic/
     TodoItemComponentComponent,
     ToDoListFilterPipe,
     TooltipDirective,
-    NotificationDynamicComponent
+    NotificationDynamicComponent,
+    SnackbarComponent
   ],
   imports: [
     BrowserModule,
@@ -28,6 +31,7 @@ import { NotificationDynamicComponent } from './components/notification-dynamic/
     MatButtonModule,
     MatListModule,
     MatIconModule,
+    DialogModule,
     FormsModule
   ],
   providers: [ToDoListFilterPipe],
